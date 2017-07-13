@@ -10,14 +10,15 @@ class App extends Component{
     }
   }
   render(){
-    let todos=this.state.todoList.map((item,index)=>{
+    let todos=this.state.todoList
+    .map((item,index)=>{
       return (
         <li key={index}>
-          <TodoItem key={index} todo={item}/>
+          <TodoItem key={index} todo={item}
+          onDelete={this.delete.bind(this)}/>
         </li>
       )
     })
-
     return (
       <div className='TodoWrapper'>
         <h1>我的待办</h1>
@@ -30,9 +31,10 @@ class App extends Component{
       </div>
     )
   }
+  //新增
   addTodo(e){
     this.state.todoList.push({
-      id:1,
+      id:getId(),
       title:e.target.value,
       status:'',
       deleted:false
@@ -48,5 +50,15 @@ class App extends Component{
       todoList:this.state.todoList
     })
   }
+  //删除
+  delete(todo){
+    todo.deleted=true
+    this.setState(this.state)
+  }
 } 
+let id=0
+function getId(){
+  id+=1
+  return id
+}
 export default App
