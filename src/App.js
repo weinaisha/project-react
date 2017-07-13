@@ -11,6 +11,7 @@ class App extends Component{
   }
   render(){
     let todos=this.state.todoList
+    .filter((item)=>!item.deleted)
     .map((item,index)=>{
       return (
         <li key={index}>
