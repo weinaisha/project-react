@@ -1,6 +1,8 @@
 import React,{Component} from 'react'
 import TodoInput from './TodoInput'
 import TodoItem from './TodoItem'
+import './App.css'
+
 class App extends Component{
   constructor(props){
     super(props)
@@ -16,17 +18,18 @@ class App extends Component{
       return (
         <li key={index}>
           <TodoItem key={index} todo={item}
-          onDelete={this.delete.bind(this)}/>
+          onDelete={this.delete.bind(this)}
+          onToggle={this.toggle.bind(this)}/>
         </li>
       )
     })
     return (
-      <div className='TodoWrapper'>
+      <div className='App'>
         <h1>我的待办</h1>
         <TodoInput content={this.state.newTodo}
         onSubmit={this.addTodo.bind(this)}
         onChange={this.changeTitle.bind(this)} />
-        <ol>
+        <ol className="todoList">
           {todos}
         </ol>
       </div>
@@ -54,6 +57,11 @@ class App extends Component{
   //删除
   delete(todo){
     todo.deleted=true
+    this.setState(this.state)
+  }
+  //标记已完成/未完成
+  toggle(todo){
+    todo.status = todo.status === 'completed' ? '' : 'completed'
     this.setState(this.state)
   }
 } 
