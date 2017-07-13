@@ -5,11 +5,8 @@ class App extends Component{
   constructor(props){
     super(props)
     this.state={
-      newTodo:'test',
-      TodoList:[
-        {id:1,title:'test1'},
-        {id:2,title:'test2'}
-      ]
+      newTodo:'',
+      TodoList:[]
     }
   }
   render(){
@@ -20,12 +17,16 @@ class App extends Component{
     return (
       <div className='TodoWrapper'>
         <h1>我的待办</h1>
-        <TodoInput content={this.state.newTodo} />
+        <TodoInput content={this.state.newTodo}
+        onSubmit={this.addTodo} />
         <ol>
           {todos}
         </ol>
       </div>
     )
+  }
+  addTodo(){
+    console.log('新增todo')
   }
 } 
 export default App
