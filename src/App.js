@@ -11,7 +11,11 @@ class App extends Component{
   }
   render(){
     let todos=this.state.todoList.map((item,index)=>{
-      return <TodoItem key={index} todo={item}/>
+      return (
+        <li key={index}>
+          <TodoItem key={index} todo={item}/>
+        </li>
+      )
     })
 
     return (
@@ -27,7 +31,16 @@ class App extends Component{
     )
   }
   addTodo(e){
-    
+    this.state.todoList.push({
+      id:1,
+      title:e.target.value,
+      status:'',
+      deleted:false
+    })
+    this.setState({
+      newTodo:'',
+      todoList:this.state.todoList
+    })//按下回车后清空输入框
   }
   changeTitle(e){
     this.setState({
