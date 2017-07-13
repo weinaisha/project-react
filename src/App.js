@@ -14,7 +14,7 @@ class App extends Component{
   }
   render(){
     let todos=this.state.TodoList.map((item,index)=>{
-      return <TodoItem todo={item}/>
+      return <TodoItem key={index} todo={item}/>
     })
 
     return (
