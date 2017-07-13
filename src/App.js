@@ -1,6 +1,6 @@
 import React,{Component} from 'react'
 import TodoInput from './TodoInput'
-
+import TodoItem from './TodoItem'
 class App extends Component{
   constructor(props){
     super(props)
@@ -14,7 +14,7 @@ class App extends Component{
   }
   render(){
     let todos=this.state.TodoList.map((item,index)=>{
-      return <li key={index}>{item.title}</li>
+      return <TodoItem todo={item}/>
     })
 
     return (
