@@ -1,4 +1,5 @@
 import React,{Component} from 'react'
+import TodoInput from './TodoInput'
 
 class App extends Component{
   constructor(props){
@@ -12,14 +13,14 @@ class App extends Component{
     }
   }
   render(){
-    let todos=this.state.TodoList.map((item)=>{
-      return <li>{item.title}</li>
+    let todos=this.state.TodoList.map((item,index)=>{
+      return <li key={index}>{item.title}</li>
     })
 
     return (
       <div className='TodoWrapper'>
         <h1>我的待办</h1>
-        <input type='text' value={this.state.newTodo} />
+        <TodoInput content={this.state.newTodo} />
         <ol>
           {todos}
         </ol>
