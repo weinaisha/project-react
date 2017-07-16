@@ -1,6 +1,7 @@
 import React,{Component} from 'react'
 import TodoInput from './TodoInput'
 import TodoItem from './TodoItem'
+import * as localStore from './localStore'
 import './App.css'
 
 class App extends Component{
@@ -8,7 +9,7 @@ class App extends Component{
     super(props)
     this.state={
       newTodo:'',
-      todoList:[]
+      todoList:localStore.load('todoList')||[]
     }
   }
   render(){
@@ -34,6 +35,9 @@ class App extends Component{
         </ol>
       </div>
     )
+  }
+  componentDidUpdate(){
+    localStore.save('todoList', this.state.todoList)
   }
   //新增
   addTodo(e){
