@@ -1,15 +1,23 @@
 import React,{Component} from 'react'
 import TodoInput from './TodoInput'
 import TodoItem from './TodoItem'
-import * as localStore from './localStore'
+import UserDialog from './UserDialog'
 import './App.css'
+
+var TestObject = AV.Object.extend('TestObject')
+var testObject = new TestObject()
+testObject.save({
+  words: 'Hello World!'
+}).then(function(object) {
+  alert('LeanCloud Rocks!')
+})
 
 class App extends Component{
   constructor(props){
     super(props)
     this.state={
       newTodo:'',
-      todoList:localStore.load('todoList')||[]
+      todoList:[]
     }
   }
   render(){
@@ -33,11 +41,11 @@ class App extends Component{
         <ol className="todoList">
           {todos}
         </ol>
+        <UserDialog />
       </div>
     )
   }
   componentDidUpdate(){
-    localStore.save('todoList', this.state.todoList)
   }
   //新增
   addTodo(e){
