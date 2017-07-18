@@ -30,3 +30,11 @@ function getUserFromAVUser(AVUser){
     ...AVUser.attributes
   }
 }
+export function signIn(username,password,success,error){
+  AV.User.logIn(username, password).then(function (loginedUser) {
+    let user = getUserFromAVUser(loginedUser)
+    success.call(null,user)
+  }, function (loginedUser) {
+    error.call(null,loginedUser)
+  });
+}

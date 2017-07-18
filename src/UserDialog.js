@@ -51,7 +51,32 @@ export default class UserDialog extends Component{
      }
      signUp(username, password, success, error)
     }
-    
+    //登录
+    signIn(e){
+        e.preventDefault()
+        let {username, password} = this.state.formData
+        let success = (user)=>{
+            this.props.onSignIn.call(null,user)
+        }
+        let error = (error)=>{
+          console.log(error)
+            switch(error.code){
+              case 210:
+                alert('用户名与密码不匹配')
+                break
+              case 211:
+                alert('用户名不存在')
+                break
+              case 503:
+                alert('服务器维护中')
+                break
+              default:
+                alert(error)
+                break
+            }
+        }
+        signIn(username, password, success, error) 
+    }
    render(){
      let signUpForm = (
        <form className="signUp" onSubmit={this.signUp.bind(this)}> {/* 注册*/}
