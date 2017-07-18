@@ -3,7 +3,7 @@ import TodoInput from './TodoInput'
 import TodoItem from './TodoItem'
 import UserDialog from './UserDialog'
 import {copyState} from './copyState'
-import {getCurrentUser,signOut} from './leanCloud'
+import {getCurrentUser,signOut,TodoModel} from './leanCloud'
 import './App.css'
 
 class App extends Component{
@@ -52,16 +52,21 @@ class App extends Component{
   }
   //新增todo
   addTodo(e){
-    this.state.todoList.push({
-      id:getId(),
+    let newTodo={
       title:e.target.value,
       status:'',
       deleted:false
+    }
+    TodoModel.create(newTodo,(id)=>{
+      newTodo.id=id
+      this.state.todoList.push(newTodo)
+      this.setState({
+        newTodo:'',
+        todoList:this.state.todoList
+      })//按下回车后清空输入框
+    },(error)=>{
+      alert(error)
     })
-    this.setState({
-      newTodo:'',
-      todoList:this.state.todoList
-    })//按下回车后清空输入框
   }
   changeTitle(e){
     this.setState({
@@ -94,9 +99,4 @@ class App extends Component{
     this.setState(stateCopy)
   }
 } 
-let id=0
-function getId(){
-  id+=1
-  return id
-}
 export default App

@@ -1,12 +1,27 @@
 import AV from 'leancloud-storage'
 
-var APP_ID = '4nFtbOEDR2nuu1gBl6KSMYh8-gzGzoHsz';
-var APP_KEY = 'dwH4XnXnqNVtrPM6R8qw8IWm';
+var APP_ID = '4nFtbOEDR2nuu1gBl6KSMYh8-gzGzoHsz'
+var APP_KEY = 'dwH4XnXnqNVtrPM6R8qw8IWm'
 
 AV.init({
   appId: APP_ID,
   appKey: APP_KEY
 });
+
+export const TodoModel={
+  create({status, title, deleted}, successFn, errorFn){
+    let Todo = AV.Object.extend('Todo') 
+    let todo = new Todo()
+    todo.set('title', title)
+    todo.set('status', status)
+    todo.set('deleted', deleted)
+    todo.save().then(function (response) {
+      successFn.call(null, response.id)
+    }, function (error) {
+      errorFn && errorFn.call(null, error)
+    });
+  }
+}
 
 export default AV
 //注册
