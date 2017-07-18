@@ -47,16 +47,6 @@ class App extends Component{
       </div>
     )
   }
-  // getByUser(){
-  //   let user = getCurrentUser()
-  //   if (user) {
-  //     TodoModel.getByUser(user, (todos) => {
-  //       let stateCopy = copyState(this.state)
-  //       stateCopy.todoList = todos
-  //       this.setState(stateCopy)
-  //     })
-  //   }
-  // }
   //新增todo
   addTodo(e){
     let newTodo={
@@ -83,13 +73,18 @@ class App extends Component{
   }
   //删除todo
   delete(todo){
-    todo.deleted=true
-    this.setState(this.state)
+    TodoModel.destroy(todo.id,()=>{
+      todo.deleted=true
+      this.setState(this.state)
+    })
   }
   //标记已完成/未完成
   toggle(todo){
     todo.status = todo.status === 'completed' ? '' : 'completed'
     this.setState(this.state)
+    TodoModel.update(todo.id,()=>{
+
+    })
   }
   //登录/注册后展示todolist
   onSignUpOrSignIn(user){
