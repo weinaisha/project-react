@@ -3,6 +3,7 @@ import {signUp,signIn,reset} from './leanCloud'
 import {copyState} from './copyState'
 import SignUpForm from './SignUpForm'
 import SignInForm from './SignInForm'
+import ForgetPassword from './ForgetPassword'
 import './UserDialog.css'
 
 export default class UserDialog extends Component{
@@ -105,31 +106,6 @@ export default class UserDialog extends Component{
       reset(email,success,error)
     }
    render(){
-
-      let forgetPassword =(
-        <div className="UserDialog">
-          <div className="panes">
-            <form className="signIn" onSubmit={this.reset.bind(this)}> {/* 登录*/}
-              <div className="row">
-                <input type="email" value={this.state.formData.email}
-                placeholder="邮箱"
-                  onChange={this.changeFormData.bind(this,'email')}/>
-              </div>
-              <div className="row actions">
-                <button type="submit" value="signIn"
-                
-                >重置密码</button>
-              </div>
-              <div className="row actions">
-                <a href="javascript:;" value="signUp"
-                onClick={this.switchTab.bind(this)}>新建账号</a>
-                <a href="javascript:;" value="signIn" 
-                onClick={this.switchTab.bind(this)}>返回登录</a>
-              </div>
-            </form>
-          </div>
-        </div>
-      )
      return (
       <div className="UserDialog-Wrapper">
         {this.state.selected === 'signUp' ? 
@@ -146,7 +122,13 @@ export default class UserDialog extends Component{
             onSwitchTab={this.switchTab.bind(this)}
           />
           : null}
-        {this.state.selected === 'forgetPassword' ? forgetPassword : null}
+        {this.state.selected === 'forgetPassword' ?
+          <ForgetPassword formData={this.state.formData}
+            onChange={this.changeFormData.bind(this)}
+            onSwitchTab={this.switchTab.bind(this)}
+            onSubmit={this.reset.bind(this)}
+          />
+          : null}
       </div>
      )
    }
