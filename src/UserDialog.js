@@ -1,6 +1,7 @@
 import React,{Component} from 'react'
 import {signUp,signIn,reset} from './leanCloud'
 import {copyState} from './copyState'
+import SignUpForm from './SignUpForm'
 import './UserDialog.css'
 
 export default class UserDialog extends Component{
@@ -31,7 +32,7 @@ export default class UserDialog extends Component{
         stateCopy.formData[key]=e.target.value
         this.setState(stateCopy)
     }
-     //注册
+    //注册
     signUp(e){
      e.preventDefault()
      let {username, password,email} = this.state.formData
@@ -103,36 +104,6 @@ export default class UserDialog extends Component{
       reset(email,success,error)
     }
    render(){
-      let signUpForm = (
-        <div className="UserDialog">
-          <div className="panes">
-            <form className="signUp" onSubmit={this.signUp.bind(this)}> {/* 注册*/}
-              <div className="row">
-                <input type="text" value={this.state.formData.username}
-                placeholder="用户名"
-                  onChange={this.changeFormData.bind(this,'username')}/>
-              </div>
-              <div className="row">
-                <input type="password" value={this.state.formData.password}
-                placeholder="密码"
-                  onChange={this.changeFormData.bind(this,'password')}/>
-              </div>
-              <div className="row">
-                <input type="email" value={this.state.formData.email}
-                placeholder="邮箱"
-                  onChange={this.changeFormData.bind(this,'email')}/>
-              </div>
-              <div className="row actions">
-                <button type="submit">注册</button>
-              </div>
-              <div className="row actions">
-                <a href="javascript:;" value="signIn"
-                onClick={this.switchTab.bind(this)}>已有账号？点击登录</a>
-              </div>
-            </form>
-          </div>
-        </div>
-      )
       let signInForm = (
         <div className="UserDialog">
           <div className="panes">
@@ -186,7 +157,12 @@ export default class UserDialog extends Component{
       )
      return (
       <div className="UserDialog-Wrapper">
-        {this.state.selected === 'signUp' ? signUpForm : null}
+        {this.state.selected === 'signUp' ? 
+        <SignUpForm formData={this.state.formData}
+        onSubmit={this.signUp.bind(this)}
+        onChange={this.changeFormData.bind(this)}
+        onSwitchTab={this.switchTab.bind(this)}/>
+        : null}
         {this.state.selected === 'signIn' ? signInForm : null}
         {this.state.selected === 'forgetPassword' ? forgetPassword : null}
       </div>
