@@ -37,6 +37,15 @@ export const TodoModel={
       errorFn && errorFn.call(null, error)
     })
   },
+  update({id, title, status, deleted}, successFn, errorFn){
+    let todo = AV.Object.createWithoutData('Todo', id)
+    title !== undefined && todo.set('title', title)
+    status !== undefined && todo.set('status', status)
+    deleted !== undefined && todo.set('deleted', deleted)
+    todo.save().then((response) => {
+      successFn && successFn.call(null)
+    }, (error) => errorFn && errorFn.call(null, error))
+  },
   destroy(todoId,successFn,errorFn){
     var todo = AV.Object.createWithoutData('Todo',todoId);
     todo.destroy().then(function (response) {

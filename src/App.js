@@ -13,6 +13,14 @@ class App extends Component{
       newTodo:'',
       todoList:[]
     }
+    let user = getCurrentUser()
+    if (user) {
+      TodoModel.getByUser(user, (todos) => {
+        let stateCopy = JSON.parse(JSON.stringify(this.state))
+        stateCopy.todoList = todos
+        this.setState(stateCopy)
+      })
+    }
   }
   render(){
     let todos=this.state.todoList
@@ -80,10 +88,13 @@ class App extends Component{
   }
   //标记已完成/未完成
   toggle(todo){
+    let oldStatus = todo.status
     todo.status = todo.status === 'completed' ? '' : 'completed'
-    this.setState(this.state)
-    TodoModel.update(todo.id,()=>{
-
+    TodoModel.update(todo, () => {
+      this.setState(this.state)
+    }, (error) => {
+      todo.status = oldStatus
+      this.setState(this.state)
     })
   }
   //登录/注册后展示todolist
