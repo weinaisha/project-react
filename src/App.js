@@ -2,6 +2,7 @@ import React,{Component} from 'react'
 import TodoInput from './TodoInput'
 import TodoItem from './TodoItem'
 import UserDialog from './UserDialog'
+import {copyState} from './copyState'
 import {getCurrentUser,signOut} from './leanCloud'
 import './App.css'
 
@@ -80,14 +81,14 @@ class App extends Component{
     this.setState(this.state)
   }
   onSignUpOrSignIn(user){
-    let stateCopy=JSON.parse(JSON.stringify(this.state))
+    let stateCopy=copyState(this.state)
     stateCopy.user=user
     this.setState(stateCopy)
   }
   signOut(){
     console.log(111)
     signOut()
-    let stateCopy = JSON.parse(JSON.stringify(this.state))
+    let stateCopy=copyState(this.state)
     stateCopy.user = {}
     this.setState(stateCopy)
   }

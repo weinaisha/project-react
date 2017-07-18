@@ -1,5 +1,6 @@
 import React,{Component} from 'react'
 import {signUp,signIn} from './leanCloud'
+import {copyState} from './copyState'
 import './UserDialog.css'
 
 export default class UserDialog extends Component{
@@ -24,7 +25,7 @@ export default class UserDialog extends Component{
         })
     }
     changeFormData(key,e){
-        let stateCopy=JSON.parse(JSON.stringify(this.state))
+        let stateCopy=copyState(this.state)
         stateCopy.formData[key]=e.target.value
         this.setState(stateCopy)
     }
