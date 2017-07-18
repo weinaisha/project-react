@@ -28,6 +28,29 @@ export default class UserDialog extends Component{
         stateCopy.formData[key]=e.target.value
         this.setState(stateCopy)
     }
+     //注册
+    signUp(e){
+     e.preventDefault()
+     let {username, password} = this.state.formData
+     let success = (user)=>{
+       this.props.onSignUp.call(null,user)
+     }
+     let error = (error)=>{
+       console.log(error)
+        switch(error.code){
+          case 202:
+            alert('用户名已被占用')
+            break
+          case 503:
+            alert('服务器维护中')
+            break
+          default:
+            alert(error)
+            break
+         }
+     }
+     signUp(username, password, success, error)
+    }
     
    render(){
      let signUpForm = (
