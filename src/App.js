@@ -5,7 +5,6 @@ import UserDialog from './UserDialog'
 import {copyState} from './copyState'
 import {getCurrentUser,signOut,TodoModel} from './leanCloud'
 import './App.css'
-
 class App extends Component{
   constructor(props){
     super(props)
@@ -48,8 +47,16 @@ class App extends Component{
       </div>
     )
   }
-  componentDidUpdate(){
-  }
+  // getByUser(){
+  //   let user = getCurrentUser()
+  //   if (user) {
+  //     TodoModel.getByUser(user, (todos) => {
+  //       let stateCopy = copyState(this.state)
+  //       stateCopy.todoList = todos
+  //       this.setState(stateCopy)
+  //     })
+  //   }
+  // }
   //新增todo
   addTodo(e){
     let newTodo={
@@ -86,9 +93,12 @@ class App extends Component{
   }
   //登录/注册后展示todolist
   onSignUpOrSignIn(user){
-    let stateCopy=copyState(this.state)
-    stateCopy.user=user
-    this.setState(stateCopy)
+    TodoModel.getByUser(user, (todos) => {
+      let stateCopy = copyState(this.state)
+      stateCopy.todoList = todos
+      stateCopy.user=user
+      this.setState(stateCopy)
+    })
   }
   //登出
   signOut(){

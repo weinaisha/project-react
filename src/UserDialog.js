@@ -49,6 +49,7 @@ export default class UserDialog extends Component{
           break
         case 203:
           alert('电子邮箱地址已经被占用')
+          break
         case 503:
           alert('服务器维护中')
           break
@@ -61,29 +62,29 @@ export default class UserDialog extends Component{
   }
   //登录
   signIn(e){
-      e.preventDefault()
-      let {username, password} = this.state.formData
-      let success = (user)=>{
-          this.props.onSignIn.call(null,user)
-      }
-      let error = (error)=>{
-        console.log(error)
-          switch(error.code){
-            case 210:
-              alert('用户名与密码不匹配')
-              break
-            case 211:
-              alert('用户名不存在')
-              break
-            case 503:
-              alert('服务器维护中')
-              break
-            default:
-              alert(error)
-              break
-          }
-      }
-      signIn(username, password, success, error) 
+    e.preventDefault()
+    let {username, password} = this.state.formData
+    let success = (user)=>{
+      this.props.onSignIn.call(null,user)
+    }
+    let error = (error)=>{
+      console.log(error)
+        switch(error.code){
+          case 210:
+            alert('用户名与密码不匹配')
+            break
+          case 211:
+            alert('用户名不存在')
+            break
+          case 503:
+            alert('服务器维护中')
+            break
+          default:
+            alert(error)
+            break
+        }
+    }
+    signIn(username, password, success, error) 
   }
   //重置密码
   reset(e){

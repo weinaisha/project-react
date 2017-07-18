@@ -25,7 +25,7 @@ export default class SignUpForm  extends Component{
               <button type="submit">注册</button>
             </div>
             <div className="row actions">
-              <a href="javascript:;" value="signIn"
+              <a href="javascript:void(0)" value="signIn"
               onClick={this.props.onSwitchTab.bind(this)}>已有账号？点击登录</a>
             </div>
           </form>
