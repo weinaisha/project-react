@@ -38,3 +38,15 @@ export function signIn(username,password,success,error){
     error.call(null,loginedUser)
   });
 }
+export function getCurrentUser(){
+  let user = AV.User.current()
+  if(user){
+    return getUserFromAVUser(user)
+  }else{
+    return null
+  }
+}
+export function signOut(){
+  AV.User.logOut()
+  return undefined
+}
