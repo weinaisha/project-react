@@ -50,8 +50,7 @@ class App extends Component{
   }
   componentDidUpdate(){
   }
-  
-  //新增
+  //新增todo
   addTodo(e){
     this.state.todoList.push({
       id:getId(),
@@ -70,7 +69,7 @@ class App extends Component{
       todoList:this.state.todoList
     })
   }
-  //删除
+  //删除todo
   delete(todo){
     todo.deleted=true
     this.setState(this.state)
@@ -80,16 +79,18 @@ class App extends Component{
     todo.status = todo.status === 'completed' ? '' : 'completed'
     this.setState(this.state)
   }
+  //登录/注册后展示todolist
   onSignUpOrSignIn(user){
     let stateCopy=copyState(this.state)
     stateCopy.user=user
     this.setState(stateCopy)
   }
+  //登出
   signOut(){
-    console.log(111)
     signOut()
     let stateCopy=copyState(this.state)
     stateCopy.user = {}
+    stateCopy.todoList = []
     this.setState(stateCopy)
   }
 } 
@@ -98,8 +99,4 @@ function getId(){
   id+=1
   return id
 }
-// function getRandomColor(){
-//     return Math.floor(0x1000000 + Math.random() * 0x1000000)
-//                 .toString(16).slice(1)
-//   }
 export default App

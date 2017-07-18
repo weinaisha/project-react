@@ -10,34 +10,14 @@
  }
  .UserDialog{
    border-radius: 4px;
-   min-width: 22em;
+   min-width: 21em;
    border: 1px solid #aaa;
    -webkit-box-shadow: 0 0 1em hsla(0,0%,0%,0.35);
    box-shadow: 0 0 1em hsla(0,0%,0%,0.35);
  }
- .UserDialog input[type=radio]{
-   visibility: hidden;
- }
- .UserDialog nav>label{
-   color:#fff;
-   font-size: 1.2em;
- }
- .UserDialog nav>label:hover{
-   color:#FFEB3B;
- }
- .UserDialog nav>label:visited{
-   color:#FFEB3B;
- }
- .UserDialog > nav:first-child{
-    padding: 1em;
-    margin-left: -2em;
- }
- .UserDialog > nav:first-child label{
-    cursor: pointer;
- }
- 
  .UserDialog > .panes {
-    padding: 0 1em 1em; 
+    padding: 1.4em;
+    padding-bottom: 1.8em;
  }
  
  .UserDialog form>.row{
@@ -55,7 +35,7 @@
 .UserDialog form>.row input:-ms-input-placeholder{ 
     color:    #fff;
 }
- .UserDialog form>.row input[type=text],input[type=password]{
+ .UserDialog form>.row input{
   width: 15.2em;
   background: transparent;
   outline: none;
@@ -63,9 +43,6 @@
   border-bottom: 1px solid #f2f7f2;
   line-height: 1.8em;
   color: #fff;
- }
- .UserDialog form>.row>label:first-child{
-    width: 4em;
  }
  .UserDialog form>.row.actions button{
    width: 15.2em;
@@ -75,4 +52,11 @@
     background: #009688;
     padding: 0.4em;
     margin: 10px 0;
+ }
+ .UserDialog form>.row.actions a{
+   color: #fff;
+   padding: 1.7em
+ }
+ .UserDialog form>.row.actions a:hover{
+   color: #009688;
  }
