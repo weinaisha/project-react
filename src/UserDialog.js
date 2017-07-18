@@ -1,4 +1,5 @@
 import React,{Component} from 'react'
+import {signUp,signIn} from './leanCloud'
 import './UserDialog.css'
 
 export default class UserDialog extends Component{
@@ -12,43 +13,34 @@ export default class UserDialog extends Component{
         }
       }
     }
+    //切换登录/注册
     switch(e){
-        console.log('用户点击了')
         this.setState({
-            selected:e.target.value
+            selected:e.target.value,
+            formData:{
+                username:'',
+                password:''
+            }
         })
     }
-    signIn(){
-        console.log('用户登录了')
-    }
-    signUp(){
-        console.log('用户注册了')
-    }
-    changePassword(e){
+    changeFormData(key,e){
         let stateCopy=JSON.parse(JSON.stringify(this.state))
-        stateCopy.formData.password=e.target.value
-        this.setState(stateCopy)
-        
-    }
-    changUsername(e){
-        let stateCopy=JSON.parse(JSON.stringify(this.state))
-        stateCopy.formData.username=e.target.value
+        stateCopy.formData[key]=e.target.value
         this.setState(stateCopy)
     }
     
    render(){
-       console.log(this.state)
      let signUpForm = (
        <form className="signUp" onSubmit={this.signUp.bind(this)}> {/* 注册*/}
          <div className="row">
-           <label>用户名</label> 
            <input type="text" value={this.state.formData.username}
-           onChange={this.changeUsername.bind(this)}/>
+           placeholder="用户名"
+            onChange={this.changeFormData.bind(this,'username')}/>
          </div>
          <div className="row">
-           <label>密码</label>
            <input type="password" value={this.state.formData.password}
-           onChange={this.changePassword.bind(this)}/>
+           placeholder="密码"
+            onChange={this.changeFormData.bind(this,'password')}/>
          </div>
          <div className="row actions">
            <button type="submit">注册</button>
@@ -58,14 +50,14 @@ export default class UserDialog extends Component{
      let signInForm = (
        <form className="signIn" onSubmit={this.signIn.bind(this)}> {/* 登录*/}
          <div className="row">
-           <label>用户名</label>
            <input type="text" value={this.state.formData.username}
-           onChange={this.changUsername.bind(this)}/>
+            placeholder="用户名"
+            onChange={this.changeFormData.bind(this,'username')}/>
          </div>
          <div className="row">
-           <label>密码</label>
-           <input type="password" value={this.state.formData.password} 
-           onChange={this.changePassword.bind(this)}/>
+           <input type="password" value={this.state.formData.password}
+            placeholder="密码" 
+            onChange={this.changeFormData.bind(this,'password')}/>
          </div>
          <div className="row actions">
            <button type="submit">登录</button>
@@ -75,12 +67,16 @@ export default class UserDialog extends Component{
      return (
        <div className="UserDialog-Wrapper">
          <div className="UserDialog">
-           <nav onChange={this.switch.bind(this)}>
+           <nav>
              <label>
-                <input type="radio" value="signUp" checked={this.state.selected === 'signUp'}/> 注册
+                <input type="radio" value="signUp" 
+                checked={this.state.selected === 'signUp'}
+                onChange={this.switch.bind(this)}/> 注册
              </label>
              <label>
-                <input type="radio" value="signIn" checked={this.state.selected === 'signIn'}/> 登录
+                <input type="radio" value="signIn" 
+                checked={this.state.selected === 'signIn'}
+                onChange={this.switch.bind(this)}/> 登录
              </label>
            </nav>
            <div className="panes">

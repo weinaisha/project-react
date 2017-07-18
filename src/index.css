@@ -1,9 +1,11 @@
 
 body{
-  background: #ddd;
-  font-family: sans-serif;		 
   display: flex;
+  -ms-display:flex;
   justify-content: center;
-  min-height: 100vh;
+  font-family: sans-serif;		 
+  background: url(background-min.jpg) 0,100%;
+  font-size: 16px;
+  color: #666;
 }
 	  

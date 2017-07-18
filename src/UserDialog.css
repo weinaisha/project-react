@@ -1,20 +1,78 @@
 .UserDialog-Wrapper{ 
-   /*全屏*/      position: fixed; top: 0; left: 0; bottom: 0; right: 0; 
-   /*内容居中*/  display: flex; justify-content: center; align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0; 
+  right: 0; 
+  display: flex;
+  justify-content: center;
+  align-items: center;
  }
  .UserDialog{
-   border: 1px solid;
    border-radius: 4px;
-   min-width: 20em;
-   background: white;
+   min-width: 22em;
    border: 1px solid #aaa;
+   -webkit-box-shadow: 0 0 1em hsla(0,0%,0%,0.35);
    box-shadow: 0 0 1em hsla(0,0%,0%,0.35);
  }
- .UserDialog > nav:first-child{ padding: 1em;margin-left: -2em; }
- .UserDialog > nav:first-child label{ margin-left: 2em; cursor: pointer;}
+ .UserDialog input[type=radio]{
+   visibility: hidden;
+ }
+ .UserDialog nav>label{
+   color:#fff;
+   font-size: 1.2em;
+ }
+ .UserDialog nav>label:hover{
+   color:#FFEB3B;
+ }
+ .UserDialog nav>label:visited{
+   color:#FFEB3B;
+ }
+ .UserDialog > nav:first-child{
+    padding: 1em;
+    margin-left: -2em;
+ }
+ .UserDialog > nav:first-child label{
+    cursor: pointer;
+ }
  
- .UserDialog > .panes { padding: 0 1em 1em; }
+ .UserDialog > .panes {
+    padding: 0 1em 1em; 
+ }
  
- .UserDialog form>.row{ display: flex; padding: .3em 0; }
- .UserDialog form>.row>label:first-child{ width: 4em; }
- .UserDialog form>.row.actions{ padding-left: 4em; }
+ .UserDialog form>.row{
+    padding: .3em 0;
+ }
+.UserDialog form>.row input::-webkit-input-placeholder{ 
+    color:    #fff;
+}
+.UserDialog form>.row input:-moz-placeholder{ 
+    color:    #fff;
+}
+.UserDialog form>.row input::-moz-placeholder{ 
+    color:    #fff;
+}
+.UserDialog form>.row input:-ms-input-placeholder{ 
+    color:    #fff;
+}
+ .UserDialog form>.row input[type=text],input[type=password]{
+  width: 15.2em;
+  background: transparent;
+  outline: none;
+  border: none;
+  border-bottom: 1px solid #f2f7f2;
+  line-height: 1.8em;
+  color: #fff;
+ }
+ .UserDialog form>.row>label:first-child{
+    width: 4em;
+ }
+ .UserDialog form>.row.actions button{
+   width: 15.2em;
+    color: #fff;
+    border: none;
+    outline: none;
+    background: #009688;
+    padding: 0.4em;
+    margin: 10px 0;
+ }

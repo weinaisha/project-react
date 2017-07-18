@@ -1,13 +1,66 @@
 .TodoItem{
-  padding: .5em;
+  position: relative;
+  height: 5.2em;
   display: -ms-flexbox;
   display: flex;
   -ms-flex-align: center;
   align-items: center;
+  -ms-flex-pack: justify;
   justify-content: space-between;
   font-size: 16px;
+  border-radius: 20px;
+  border: 1px solid rgba(255,255,255,.7);
+  background-clip: padding-box;
+  background: rgba(255,255,255,.7);
+  overflow: hidden;
 }
 .TodoItem>.title{
-  padding: 0 .5em;
   text-align: center;
+}
+.TodoItem .content{
+  height: 100%;
+  font-size: 1.5em;
+}
+.TodoItem .options{
+  width: 100px;
+}
+.TodoItem .options .iconDelete{
+  cursor: pointer;
+  width: 30px;
+  height: 30px;
+}
+.TodoItem .options input[type=checkbox]:checked +svg {
+  
+  display: block;
+}
+ .TodoItem .options .completed{
+    display: none;
+    position: absolute;
+    left: -3px;
+    top: -10px;
+    width: 40px;
+    height: 41px;
+} 
+.TodoItem .options input[type=checkbox]{
+   visibility: hidden;  
+}
+.TodoItem .options label{
+  display: block;
+  position: absolute;
+  top: 25px;
+  left: 25px;
+  content: '';
+  background: #fff;
+  border-radius: 50%;
+  border: 6px solid #9E9E9E;
+  width: 25px;
+  height: 25px;
+  cursor: pointer;
+}
+.TodoItem .tag{
+  width: 93px;
+    height: 100%;
+    display: inline-block;
+    margin-right: 23px;
+    vertical-align: middle;
 }
