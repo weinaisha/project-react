@@ -2,6 +2,7 @@ import React,{Component} from 'react'
 import {signUp,signIn,reset} from './leanCloud'
 import {copyState} from './copyState'
 import SignUpForm from './SignUpForm'
+import SignInForm from './SignInForm'
 import './UserDialog.css'
 
 export default class UserDialog extends Component{
@@ -104,33 +105,7 @@ export default class UserDialog extends Component{
       reset(email,success,error)
     }
    render(){
-      let signInForm = (
-        <div className="UserDialog">
-          <div className="panes">
-            <form className="signIn" onSubmit={this.signIn.bind(this)}> {/* 登录*/}
-              <div className="row">
-                <input type="text" value={this.state.formData.username}
-                  placeholder="用户名"
-                  onChange={this.changeFormData.bind(this,'username')}/>
-              </div>
-              <div className="row">
-                <input type="password" value={this.state.formData.password}
-                  placeholder="密码" 
-                  onChange={this.changeFormData.bind(this,'password')}/>
-              </div>
-              <div className="row actions">
-                <button type="submit">登录</button>
-              </div>
-              <div className="row actions">
-                <a href="javascript:;" value="signUp"
-                onClick={this.switchTab.bind(this)}>新建账号</a>
-                <a href="javascript:;" value="forgetPassword" 
-                onClick={this.switchTab.bind(this)}>忘记密码？</a>
-              </div>
-            </form>
-          </div>
-        </div>
-      )
+
       let forgetPassword =(
         <div className="UserDialog">
           <div className="panes">
@@ -158,12 +133,19 @@ export default class UserDialog extends Component{
      return (
       <div className="UserDialog-Wrapper">
         {this.state.selected === 'signUp' ? 
-        <SignUpForm formData={this.state.formData}
-        onSubmit={this.signUp.bind(this)}
-        onChange={this.changeFormData.bind(this)}
-        onSwitchTab={this.switchTab.bind(this)}/>
-        : null}
-        {this.state.selected === 'signIn' ? signInForm : null}
+          <SignUpForm formData={this.state.formData}
+            onSubmit={this.signUp.bind(this)}
+            onChange={this.changeFormData.bind(this)}
+            onSwitchTab={this.switchTab.bind(this)}
+          />
+          : null}
+        {this.state.selected === 'signIn' ? 
+          <SignInForm formData={this.state.formData}
+            onSubmit={this.signIn.bind(this)}
+            onChange={this.changeFormData.bind(this)}
+            onSwitchTab={this.switchTab.bind(this)}
+          />
+          : null}
         {this.state.selected === 'forgetPassword' ? forgetPassword : null}
       </div>
      )
