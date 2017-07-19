@@ -102,6 +102,7 @@ class App extends Component{
   }
   //登录/注册后展示todolist
   onSignUpOrSignIn(user){
+    
     TodoModel.getByUser(user, (todos) => {
       let stateCopy = copyState(this.state)
       stateCopy.todoList = todos

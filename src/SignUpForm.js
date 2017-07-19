@@ -5,7 +5,7 @@ export default class SignUpForm  extends Component{
     return(
       <div className="UserDialog">
         <div className="panes">
-          <form className="signUp" onSubmit={this.props.onSubmit.bind(this)}> {/* 注册*/}
+          <form className="signUp" onSubmit={this.props.onSubmit.bind(this)}>
             <div className="row">
               <input type="text" value={this.props.formData.username}
               placeholder="用户名"

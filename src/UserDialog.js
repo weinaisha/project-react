@@ -58,7 +58,15 @@ export default class UserDialog extends Component{
           break
         }
     }
-    signUp(username, password,email,success,error)
+    if(/.{4,}/.test(username)&&/.{6,}/.test(password)&&/@/.test(email)){
+      signUp(username, password,email,success,error)
+    }
+    if(!/.{4,}/.test(username)){
+      alert('用户名必须大于三个字符')
+    }
+    if(!/.{6,}/.test(password)){
+      alert('密码必须不小于6个字符')
+    }
   }
   //登录
   signIn(e){
