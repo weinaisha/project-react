@@ -72,9 +72,8 @@
   border-right: transparent;
 }
 .TodoItem .tag{
-  width: 93px;
+  width: 70px;
   height: 100%;
   display: inline-block;
-  margin-right: 23px;
   vertical-align: middle;
 }

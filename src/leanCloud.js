@@ -8,7 +8,7 @@ AV.init({
   appKey: APP_KEY
 });
 export default AV
-
+//保存、更新、删除对象
 export const TodoModel={
   getByUser(user,successFn,errorFn){
     var query = new AV.Query('Todo')

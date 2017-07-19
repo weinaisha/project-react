@@ -13,7 +13,7 @@ class App extends Component{
       newTodo:'',
       todoList:[]
     }
-    let user = getCurrentUser()
+    let user = getCurrentUser()//刷新获取当前用户所创建的todo
     if (user) {
       TodoModel.getByUser(user, (todos) => {
         let stateCopy = JSON.parse(JSON.stringify(this.state))
@@ -28,9 +28,10 @@ class App extends Component{
     .map((item,index)=>{
       return (
         <li key={index}>
-          <TodoItem key={index} todo={item} 
-          onDelete={this.delete.bind(this)}
-          onToggle={this.toggle.bind(this)}/>
+          <TodoItem key={index} todo={item} date={this.state.date}
+            onDelete={this.delete.bind(this)}
+            onToggle={this.toggle.bind(this)}
+         />
         </li>
       )
     })
@@ -50,8 +51,9 @@ class App extends Component{
          {this.state.user.id ?
           null : 
           <UserDialog 
-          onSignUp={this.onSignUpOrSignIn.bind(this)}
-          onSignIn={this.onSignUpOrSignIn.bind(this)}/>}
+            onSignUp={this.onSignUpOrSignIn.bind(this)}
+            onSignIn={this.onSignUpOrSignIn.bind(this)}
+          />}
       </div>
     )
   }
@@ -62,6 +64,7 @@ class App extends Component{
       status:'',
       deleted:false
     }
+    console.log('addTodo:'+this.state.date)
     TodoModel.create(newTodo,(id)=>{
       newTodo.id=id
       this.state.todoList.push(newTodo)
