@@ -7,12 +7,9 @@
   align-items: center;
   -ms-flex-pack: justify;
   justify-content: space-between;
-  font-size: 16px;
   border-radius: 20px;
-  border: 1px solid rgba(255,255,255,.7);
-  background-clip: padding-box;
+  padding: 0 1em;
   background: rgba(255,255,255,.7);
-  overflow: hidden;
 }
 .TodoItem>.title{
   text-align: center;
@@ -22,7 +19,8 @@
   font-size: 1.5em;
 }
 .TodoItem .options{
-  width: 100px;
+  display: flex;
+  align-items: center;
 }
 .TodoItem .options .iconDelete{
   cursor: pointer;
@@ -48,19 +46,35 @@
   display: block;
   position: absolute;
   top: 25px;
-  left: 25px;
-  content: '';
-  background: #fff;
   border-radius: 50%;
-  border: 6px solid #9E9E9E;
+  border: 3px solid #505050;
   width: 25px;
   height: 25px;
   cursor: pointer;
+  background: transparent;
+}
+.TodoItem .options label:first-child{
+  left: 25px;
+}
+.TodoItem .options label:nth-child(2){
+  right: 52px;
+}
+.TodoItem .options label:nth-child(2)::before{
+  content: '';
+  display: block;
+  position: absolute;
+  right: 3px;
+  top: 5px;
+  width: 9px;
+  height: 9px;
+  border: 3px solid #505050;
+  border-top: transparent;
+  border-right: transparent;
 }
 .TodoItem .tag{
   width: 93px;
-    height: 100%;
-    display: inline-block;
-    margin-right: 23px;
-    vertical-align: middle;
+  height: 100%;
+  display: inline-block;
+  margin-right: 23px;
+  vertical-align: middle;
 }
