@@ -50,6 +50,9 @@ export default class UserDialog extends Component{
         case 203:
           alert('电子邮箱地址已经被占用')
           break
+        case 125||204:
+          alert('请输入有效的邮箱地址')
+          break
         case 503:
           alert('服务器维护中')
           break
@@ -81,7 +84,7 @@ export default class UserDialog extends Component{
           case 210:
             alert('用户名与密码不匹配')
             break
-          case 211:
+          case 211||126:
             alert('用户名不存在')
             break
           case 503:
