@@ -8,7 +8,6 @@ AV.init({
   appKey: APP_KEY
 });
 export default AV
-//保存、更新、删除对象
 export const TodoModel={
   getByUser(user,successFn,errorFn){
     var query = new AV.Query('Todo')
@@ -21,7 +20,8 @@ export const TodoModel={
       errorFn && errorFn.call(null, error)
     })
   },
-  create({status, title, deleted}, successFn, errorFn){
+  //新建
+  create({status, title,deleted}, successFn, errorFn){
     let Todo = AV.Object.extend('Todo') 
     let todo = new Todo()
     todo.set('title', title)
@@ -37,7 +37,8 @@ export const TodoModel={
       errorFn && errorFn.call(null, error)
     })
   },
-  update({id, title, status, deleted}, successFn, errorFn){
+  //更新
+  update({id, title, status,deleted}, successFn, errorFn){
     let todo = AV.Object.createWithoutData('Todo', id)
     title !== undefined && todo.set('title', title)
     status !== undefined && todo.set('status', status)
@@ -46,13 +47,28 @@ export const TodoModel={
       successFn && successFn.call(null)
     }, (error) => errorFn && errorFn.call(null, error))
   },
+  //销毁
   destroy(todoId,successFn,errorFn){
     var todo = AV.Object.createWithoutData('Todo',todoId);
     todo.destroy().then(function (response) {
       successFn && successFn.call(null)
+      (response)
       }, function (error) {
       errorFn && errorFn.call(null, error)
     });
+  },
+  //查询
+  require(action,actionValue,success,error){
+     var query = new AV.Query('Todo')
+     query.equalTo(action,actionValue)
+     query.find().then((todos) => {
+      let array=todos.map((todo) => {
+        return {id:todo.id,...todo.attributes}
+      })
+      success.call(null, array)
+     },(error)=>{
+       error.call(null,error)
+     })
   }
 }
 //注册

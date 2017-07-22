@@ -8,12 +8,12 @@ export default class SignUpForm  extends Component{
           <form className="signUp" onSubmit={this.props.onSubmit.bind(this)}>
             <div className="row">
               <input type="text" value={this.props.formData.username}
-              placeholder="用户名"
+              placeholder="用户名(不少于三位)"
               onChange={this.props.onChange.bind(this,'username')}/>
             </div>
             <div className="row">
               <input type="password" value={this.props.formData.password}
-              placeholder="密码"
+              placeholder="密码(不少于六位)"
               onChange={this.props.onChange.bind(this,'password')}/>
             </div>
             <div className="row">

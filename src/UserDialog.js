@@ -27,7 +27,7 @@ export default class UserDialog extends Component{
         password:''
       }
     })
-    console.log('切换登录/注册')
+    ('切换登录/注册')
   }
   changeFormData(key,e){
       let stateCopy=copyState(this.state)
@@ -42,7 +42,7 @@ export default class UserDialog extends Component{
       this.props.onSignUp.call(null,user)
     }
     let error = (error)=>{
-      console.log(error)
+      (error)
       switch(error.code){
         case 202:
           alert('用户名已被占用')
@@ -61,11 +61,11 @@ export default class UserDialog extends Component{
           break
         }
     }
-    if(/.{4,}/.test(username)&&/.{6,}/.test(password)&&/@/.test(email)){
+    if(/\w{3,}/.test(username)&&/.{6,}/.test(password)&&/@/.test(email)){
       signUp(username, password,email,success,error)
     }
-    if(!/.{4,}/.test(username)){
-      alert('用户名必须大于三个字符')
+    if(!/\w{3,}/.test(username)){
+      alert('用户名不小于三个字符')
     }
     if(!/.{6,}/.test(password)){
       alert('密码必须不小于6个字符')
@@ -79,7 +79,7 @@ export default class UserDialog extends Component{
       this.props.onSignIn.call(null,user)
     }
     let error = (error)=>{
-      console.log(error)
+      (error)
         switch(error.code){
           case 210:
             alert('用户名与密码不匹配')
@@ -103,7 +103,7 @@ export default class UserDialog extends Component{
     let {email} = this.state.formData
     let success=(success)=>{
       this.switchTab(success)
-      console.log(success)
+      (success)
     }
     let error=(error)=>{
       switch(error.code){
