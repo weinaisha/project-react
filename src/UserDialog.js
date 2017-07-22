@@ -27,7 +27,6 @@ export default class UserDialog extends Component{
         password:''
       }
     })
-    ('切换登录/注册')
   }
   changeFormData(key,e){
       let stateCopy=copyState(this.state)
@@ -61,14 +60,11 @@ export default class UserDialog extends Component{
           break
         }
     }
-    if(/\w{3,}/.test(username)&&/.{6,}/.test(password)&&/@/.test(email)){
-      signUp(username, password,email,success,error)
-    }
-    if(!/\w{3,}/.test(username)){
-      alert('用户名不小于三个字符')
-    }
     if(!/.{6,}/.test(password)){
       alert('密码必须不小于6个字符')
+    }
+    if(/.{6,}/.test(password)){
+      signUp(username, password,email,success,error)
     }
   }
   //登录
