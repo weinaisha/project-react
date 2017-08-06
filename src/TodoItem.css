@@ -7,16 +7,15 @@
   align-items: center;
   -ms-flex-pack: justify;
   justify-content: space-between;
-  border-radius: 20px;
   padding: 0 1em;
-  background: rgba(255,255,255,.7);
+  border-bottom: 1px dashed #ccc;
 }
 .TodoItem>.title{
   text-align: center;
 }
 .TodoItem .content{
   height: 100%;
-  font-size: 1.5em;
+  font-size: 1.2em;
 }
 .TodoItem .options{
   display: flex;
@@ -28,15 +27,14 @@
   height: 30px;
 }
 .TodoItem .options input[type=checkbox]:checked +svg {
-  
   display: block;
 }
  .TodoItem .options .completed{
     display: none;
     position: absolute;
-    left: -3px;
+    left: -2px;
     top: -10px;
-    width: 40px;
+    width: 29px;
     height: 41px;
 } 
 .TodoItem .options input[type=checkbox]{
@@ -72,7 +70,6 @@
   border-right: transparent;
 }
 .TodoItem .tag{
-  width: 70px;
   height: 100%;
   display: inline-block;
   vertical-align: middle;

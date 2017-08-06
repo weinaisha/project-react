@@ -1,14 +1,15 @@
 .optionsTab{
-    margin: 25px;
-    margin-top: -9px;
     padding: 0;
 }
 .optionsTab>li{
-    display: inline-block;
-    color: #666;
-    margin: 0 18px;
+    color: #fff;
+    margin: 1.2rem 0;
     list-style: none;
     cursor: pointer;
+    text-align: center;
+    border-bottom: 1px dashed #e4e3e3;
+    line-height: 2rem;
+    height: 2rem;
 }
 .optionsTab>li:hover{
     color:#fff;

@@ -7,6 +7,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  background: #fff;
+  flex-direction: column;
  }
  .UserDialog{
    border-radius: 4px;
@@ -18,31 +20,32 @@
  .UserDialog > .panes {
     padding: 1.4em;
     padding-bottom: 1.8em;
+    text-align: center;
  }
  
  .UserDialog form>.row{
     padding: .3em 0;
  }
 .UserDialog form>.row input::-webkit-input-placeholder{ 
-    color:    #fff;
+    color:    #666;
 }
 .UserDialog form>.row input:-moz-placeholder{ 
-    color:    #fff;
+    color:    #666;
 }
 .UserDialog form>.row input::-moz-placeholder{ 
-    color:    #fff;
+    color:    #666;
 }
 .UserDialog form>.row input:-ms-input-placeholder{ 
-    color:    #fff;
+    color:    #666;
 }
  .UserDialog form>.row input{
   width: 15.2em;
   background: transparent;
   outline: none;
   border: none;
-  border-bottom: 1px solid #f2f7f2;
+  border-bottom: 1px solid #666;
   line-height: 1.8em;
-  color: #fff;
+  color: #666;
  }
  .UserDialog form>.row.actions button{
    width: 15.2em;
@@ -54,7 +57,7 @@
     margin: 10px 0;
  }
  .UserDialog form>.row.actions a{
-   color: #fff;
+   color: #666;
    padding: 1.7em
  }
  .UserDialog form>.row.actions a:hover{

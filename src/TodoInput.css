@@ -1,13 +1,26 @@
 .TodoInput{
-  width: 100%;
+  width: 50%;
   line-height: 2.5;
-  margin-bottom: 1.2em;
-  font-size: 16px;
-  padding: 0 .2em;
-  outline: none;
-  border-radius: 7px;
   font-size: 1.2em;
-  border: 1px solid #fff;
-  background: transparent;
-  color: #fff;
+  border: none;
+  border-bottom: 1px solid #4dd2c5;
+  background: #fff;
+}
+.TodoInput:before,.TodoInput:after{
+  content: '';
+  position: absolute;
+  top: 0;
+  height: 10px;
+  width: 1px;
+  background: #4dd2c5;
+}
+.TodoInput:before{
+  right: 0;
+}
+.TodoInput:after{
+  left: 0;
+}
+.TodoInput:focus{
+  border: none;
+  outline: none;
 }

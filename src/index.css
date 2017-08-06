@@ -1,11 +1,10 @@
 
 body{
-  display: flex;
-  -ms-display:flex;
-  justify-content: center;
+  margin: 0;
+  padding: 0;
   font-family: sans-serif;		 
-  background: url(background-min.jpg) 0,100%;
   font-size: 16px;
-  color: #666;
 }
-	  
+*{
+  box-sizing: border-box;
+}

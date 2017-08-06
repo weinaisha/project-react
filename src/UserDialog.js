@@ -116,6 +116,7 @@ export default class UserDialog extends Component{
   render(){
     return (
     <div className="UserDialog-Wrapper">
+      <h1>Todo List</h1>
       {this.state.selected === 'signUp' ? 
         <SignUpForm formData={this.state.formData}
           onSubmit={this.signUp.bind(this)}
